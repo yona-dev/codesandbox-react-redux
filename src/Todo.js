@@ -10,13 +10,13 @@ const Todo = ({ onClick, completed, text, addChildTodo, childTodo }) => (
       }}
     >
       {text}
+      <button onClick={addChildTodo}>addChildTodo</button>
     </li>
     <ul>
       {childTodo.map(todo => (
         <li>{todo.text}</li>
       ))}
     </ul>
-    <li onClick={addChildTodo}>addChildTodo</li>
   </div>
 );
 
