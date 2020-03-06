@@ -1,7 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Todo = ({ onClick, completed, text, addChildTodo, childTodo }) => {
+const Todo = ({
+  onClick,
+  completed,
+  text,
+  addChildTodo,
+  childTodo,
+  createdAt
+}) => {
   var input;
   return (
     <li>
@@ -30,6 +37,14 @@ const Todo = ({ onClick, completed, text, addChildTodo, childTodo }) => {
             addChildTodo
           </button>
         </div>
+      </div>
+      <div
+        style={{
+          fontSize: 12,
+          color: "#aeaeae"
+        }}
+      >
+        createdAt: {new Date(createdAt).toString()}
       </div>
       <ul>
         {childTodo.map(todo => (

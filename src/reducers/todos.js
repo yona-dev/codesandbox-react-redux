@@ -7,7 +7,8 @@ const todos = (state = [], action) => {
           id: action.id,
           text: action.text,
           completed: false,
-          childTodo: []
+          childTodo: [],
+          createdAt: Date.now()
         }
       ];
     case "ADD_CHILD_TODO":
