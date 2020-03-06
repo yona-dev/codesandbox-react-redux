@@ -1,24 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Todo = ({ onClick, completed, text, addChildTodo, childTodo }) => (
-  <div>
-    <li
-      onClick={onClick}
-      style={{
-        textDecoration: completed ? "line-through" : "none"
-      }}
-    >
-      {text}
+const Todo = ({ onClick, completed, text, addChildTodo, childTodo }) => {
+  var input;
+  return (
+    <li>
+      <div
+        style={{
+          display: "flex"
+        }}
+      >
+        <div
+          onClick={onClick}
+          style={{
+            textDecoration: completed ? "line-through" : "none"
+          }}
+        >
+          {text}
+        </div>
+        <div>
+          <input type="text" ref={node => (input = node)} />
+          <button
+            onClick={() => {
+              if (!input.value.trim()) return;
+              addChildTodo(input.value);
+              input.value = "";
+            }}
+          >
+            addChildTodo
+          </button>
+        </div>
+      </div>
+      <ul>
+        {childTodo.map(todo => (
+          <li>{todo.text}</li>
+        ))}
+      </ul>
     </li>
-    <ul>
-      {childTodo.map(todo => (
-        <li>{todo.text}</li>
-      ))}
-    </ul>
-    <li onClick={addChildTodo}>addChildTodo</li>
-  </div>
-);
+  );
+};
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,

@@ -9,7 +9,7 @@ const TodoList = ({ todos, toggleTodo, addChildTodo }) => (
         key={todo.id}
         {...todo}
         onClick={() => toggleTodo(todo.id)}
-        addChildTodo={() => addChildTodo(todo.id, "test")}
+        addChildTodo={text => addChildTodo(todo.id, text)}
       />
     ))}
   </ul>
